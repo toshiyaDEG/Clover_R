@@ -1,0 +1,24 @@
+{% extends "usuarios/base.html" %}
+
+{% block title %} Lista de alumnos {% endblock %}
+
+{% block content %}
+
+<section class="mi-tarea section">
+    <div class="container-sm">
+        <h2 class="text-center my-5">Lista de alumnos</h2>
+        <h3>Nombres(s) : Apellidos : Correo</h3>
+        {% for alumno in grupo %}
+        <ul class="list-group list-group-horizontal" style="margin-top:10px; margin-bottom: 10px;">
+            <li class="list-group-item">{{ alumno.first_name }}</li>
+            <li class="list-group-item">{{ alumno.last_name }}</li>
+            <li class="list-group-item">{{ alumno.email }}</li>
+            <a href="/materias/ciencias_naturales/editar/{{tarea.id}}" class="btn btn-success btn-lg ml-2" role="button">Editar</a>
+            <a href="/materias/ciencias_naturales/eliminar/{{tarea.id}}" class="btn btn-success btn-lg ml-2" role="button">Eliminar</a>
+        </ul>
+        {% endfor %}
+
+    </div>
+</section>
+
+{% endblock %}
