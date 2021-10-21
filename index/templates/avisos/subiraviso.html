@@ -18,16 +18,16 @@
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
-                <label>Tema</label>
-                <input type="text" name="tema" requried />
+                <label>Título</label>
+                <input type="text" name="titulo" requried />
             </div>
             <div class="form-group">
-                <label>Comentario</label>
-                <textarea class="form-control" rows="3" name="comentario"></textarea>
+                <label>Contenido</label>
+                <textarea class="form-control" rows="3" name="contenido"></textarea>
             </div>
             <div class="form-group">
                 <label>Sube la imagen (Opcional*)</label>
-                <input class="form-control-file" type="file" name="archivo" required/>
+                <input class="form-control-file" type="file" name="imagen" required/>
             </div>
             <button type="submit">Enviar</button>
             <a class="btn" href="{% url 'avisos' %}">Cancelar</a>

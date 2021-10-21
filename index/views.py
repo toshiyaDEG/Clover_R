@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from . import models
+from index.models import Aviso
+
 from usuarios.models import Account
 
 
@@ -15,8 +16,9 @@ def avisos(request):
     """Atiende la petición GET /avisos"""
     #es_maestro = request.user.groups.filter(name="maestro").exists()
     es_maestro = Account.objects.filter(typo = "teacher").exists()
+    avisos = Aviso.objects.all()
 
-    return render(request, "avisos/avisos.html", { "es_maestro": es_maestro })
+    return render(request, "avisos/avisos.html", { "es_maestro": es_maestro, "avisos":avisos  })
 
 
 
@@ -24,6 +26,27 @@ def avisos(request):
 def subiraviso(request):
     """Atiende la petición GET /subiraviso"""
     es_maestro = Account.objects.filter(typo = "teacher").exists()
+    avisos = Aviso.objects.all()
 
+    if es_maestro:
+        if request.method == 'POST':
+            titulo_f = request.POST.get("titulo")
+            contenido_f = request.POST.get("contenido")
+            if request.FILES:
+                imagen_f = request.FILES["imagen"]
+                print(imagen_f, type(imagen_f))
+            else:
+                imagen_f = None
 
-    return render(request, "avisos/subiraviso.html", { "es_maestro": es_maestro })
+            aviso = Aviso(
+                user=request.user,
+                titulo=titulo_f,
+                contenido=contenido_f,
+            )
+            aviso.save()
+            aviso.imagen=imagen_f
+            aviso.save()
+
+            return render(request, "avisos/avisos.html", { "es_maestro": es_maestro, "avisos":avisos})
+
+    return render(request, "avisos/subiraviso.html", { "es_maestro": es_maestro})

@@ -131,3 +131,6 @@ dmypy.json
 
 # env
 .env
+
+# carpeta media
+media/
