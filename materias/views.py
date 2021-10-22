@@ -68,21 +68,37 @@ def subirtarea(request, msg=""):
 
     if es_maestro:
         if request.method == 'POST':
-        #         archivof = request.FILES["archivo"]
-            archivoform = request.FILES["archivo"]
-            materiaidform = request.POST.get("materia", None)
-            materiatareaobj = Materia.objects.get(pk=materiaidform)
+            tema_f = request.POST.get("tema")
+            comentario_f = request.POST.get("comentario")
+            fecha_f = request.POST.get("fechaLimite")
+            materiaId = request.POST.get("materia", None)
+            materia_f = Materia.objects.get(pk=materiaId)
+            if request.FILES:
+                archivo_f = request.FILES["archivo"]
+            else:
+                archivo_f = None
 
-            Tarea.objects.create(
-                archivo=archivoform,
-                tema = request.POST["tema"],
-                comentario = request.POST["comentario"],
-                fechaLimite = request.POST["fechaLimite"],
-                materia_tarea= materiatareaobj
+            tarea = Tarea(
+                user=request.user,
+                tema=tema_f,
+                comentario=comentario_f,
+                fechaLimite=fecha_f,
+                materia_tarea=materia_f
             )
-            # msg = "La tarea seha publicado exitosamente"
-            return HttpResponse("Tu archivo se ha subido correctamente")
-        return render(request, "tareas/subirtarea.html",{"es_maestro":es_maestro,"materias":materias})
+            tarea.save()
+            tarea.archivo=archivo_f
+            tarea.save()
+
+            return HttpResponse("La tarea se ha publicado correctamente")
+
+    return render(request, "tareas/subirtarea.html",{
+        "es_maestro":es_maestro,
+        "materias":materias
+        }
+    )
+
+
+
 
 
 # Views de las materias, menú general e individuales.
@@ -130,7 +146,7 @@ def ciencias_naturales(request):
     return render(request, "materias/ciencias_naturales.html",{"tarea_cn":tarea_cn, "es_maestro":es_maestro})
 
 @login_required()
-def cn_eliminar(request, id_tarea):
+def eliminar(request, id_tarea):
     """Atiende las peticiones GET y DELETE para eliminar tareas de CN"""
     # Validando si el usuario es maestro
     tipo = request.user.typo
@@ -146,7 +162,7 @@ def cn_eliminar(request, id_tarea):
 
 
 @login_required()
-def cn_editar(request, id_tarea):
+def editar(request, id_tarea):
     """Atiende las peticiones GET y POST materias/ciencias_naturales/editar/id_tarea>"""
     tarea_cn = Tarea.objects.filter(materia_tarea__id = 3)
     materias = Materia.objects.all()
@@ -162,12 +178,12 @@ def cn_editar(request, id_tarea):
     if es_maestro:
         # Trabajando POST
         if request.method == 'POST':
-            archivo_n = request.FILES["archivo"]
+            archivo_f = request.FILES["archivo"]
 
             tema_f = request.POST.get("tema")
             comentario_f = request.POST.get("comentario")
             fecha_f = request.POST.get("fechaLimite")
-            archivo_f = request.POST.get("archivo")
+            #archivo_f = request.POST.get("archivo")
             materiaId = request.POST.get("materia", None)
             materia_f = Materia.objects.get(pk=materiaId)
 
@@ -179,24 +195,9 @@ def cn_editar(request, id_tarea):
             tarea_obj.save()
 
             return HttpResponse("La tarea se ha editado correctamente")
-            # materiaidform = request.POST.get("materia", None)
-            # materiatareaobj = Materia.objects.get(pk=materiaidform)
-            # archivoform = request.FILES["archivo"]
-
-        # Asignando los nuevos valores para actualizar BD
-            # tarea_obj.archivo=archivoform,
-            # tarea_obj.tema = request.POST["tema"]
-            # tarea_obj.comentario = request.POST["comentario"]
-            # tarea_obj.fechaLimite = request.POST["fechaLimite"]
-            # tarea_obj.materia_tarea= materiatareaobj
-            # tarea_obj.save()
-            # print(tarea_obj.comentario)
-            # msg = "La tarea ha sido actualizada correctamente"
-            # return redirect("materias/ciencias_naturales.html", msg)
-        # Aquí cierra el proceso de POST
 
         # Trabajando GET
-        return render(request, "materias/cn_editar.html",
+        return render(request, "materias/editar.html",
         {
             "tarea_cn":tarea_cn,
             "tarea_obj":tarea_obj,

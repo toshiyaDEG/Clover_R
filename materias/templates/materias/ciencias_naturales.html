@@ -4,12 +4,6 @@
 
 {% block content %}
 
-{% if msg %}
-    <p>
-        {{ msg }}
-    </p>
-{% endif %}
-
 <section class="mi-tarea section">
     <div class="container-sm">
         <h2 class="text-center my-5">Tareas de Ciencias Naturales</h2>
@@ -21,8 +15,8 @@
             <li class="list-group-item" style="border-top-right-radius: .25rem; border-bottom-right-radius: .25rem;">{{ tarea.fechaLimite }}</li>
             <a href="{% url 'respuesta' tarea.id %}" class="btn btn-success btn-lg ml-2" role="button">Ver tarea</a>
             {% if es_maestro %}
-            <a href="{% url 'cn_editar' tarea.id %}" class="btn btn-success btn-lg ml-2" role="button">Editar</a>
-            <a href="{% url 'cn_eliminar' tarea.id %}" class="btn btn-success btn-lg ml-2" role="button">Eliminar</a>
+            <a href="{% url 'editar' tarea.id %}" class="btn btn-success btn-lg ml-2" role="button">Editar</a>
+            <a href="{% url 'eliminar' tarea.id %}" class="btn btn-success btn-lg ml-2" role="button">Eliminar</a>
             {% endif %}
 
         </ul>

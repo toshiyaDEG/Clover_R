@@ -8,7 +8,7 @@ class MateriaAdmin(admin.ModelAdmin):
 
 class TareaAdmin(admin.ModelAdmin):
     # Sobre escribe lo que hace __str__
-    list_display = ("id", "tema", "materia_tarea", "fecha", "fechaLimite", "comentario")
+    list_display = ("id", "user", "tema", "materia_tarea", "fecha", "fechaLimite", "comentario")
 
 
 class RespuestaAdmin(admin.ModelAdmin):

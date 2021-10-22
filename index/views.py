@@ -41,7 +41,6 @@ def subiraviso(request):
             contenido_f = request.POST.get("contenido")
             if request.FILES:
                 imagen_f = request.FILES["imagen"]
-                print(imagen_f, type(imagen_f))
             else:
                 imagen_f = None
 

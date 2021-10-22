@@ -28,6 +28,10 @@
                 <label for="exampleFormControlTextarea1">Comentarios para el maestro</label>
                 <textarea class="form-control" rows="3" name="comentario"></textarea>
             </div>
+            {% if es_maestro %}
+            <label>Calificación</label>
+            <input type="number" name="calificacion" />
+            {% endif %}
             <button type="submit">Enviar</button>
         </form>
 

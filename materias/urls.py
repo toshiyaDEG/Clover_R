@@ -15,11 +15,9 @@ urlpatterns = [
     path('educacion_civica/', views.educacion_civica, name="educacion_civica"),
     path('jalisco/', views.jalisco, name="jalisco"),
     path('ingles/', views.ingles, name="ingles"),
-    #path('respuesta/', views.respuesta, name="respuesta"),
     path('subirtarea/', views.subirtarea, name="subirtarea"),
     path('respuesta/<int:id_tarea>/', views.respuesta, name="respuesta"),
-    path('cn_editar/<int:id_tarea>/', views.cn_editar, name="cn_editar"),
-    path('cn_eliminar/<int:id_tarea>/', views.cn_eliminar, name="cn_eliminar"),
+    path('editar/<int:id_tarea>/', views.editar, name="editar"),
+    path('eliminar/<int:id_tarea>/', views.eliminar, name="eliminar"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-#path('<int:pk>/', views.subir_respuesta, name="subir_respuesta")
