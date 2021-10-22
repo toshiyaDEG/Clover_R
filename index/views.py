@@ -14,19 +14,26 @@ def index(request):
 @login_required
 def avisos(request):
     """Atiende la petición GET /avisos"""
-    #es_maestro = request.user.groups.filter(name="maestro").exists()
-    es_maestro = Account.objects.filter(typo = "teacher").exists()
     avisos = Aviso.objects.all()
+    tipo = request.user.typo
+    if tipo == "teacher":
+        es_maestro = True
+    else:
+        es_maestro = False
 
-    return render(request, "avisos/avisos.html", { "es_maestro": es_maestro, "avisos":avisos  })
+    return render(request, "avisos/avisos.html", {"es_maestro":es_maestro, "avisos":avisos})
 
 
 
 @login_required
 def subiraviso(request):
     """Atiende la petición GET /subiraviso"""
-    es_maestro = Account.objects.filter(typo = "teacher").exists()
     avisos = Aviso.objects.all()
+    tipo = request.user.typo
+    if tipo == "teacher":
+        es_maestro = True
+    else:
+        es_maestro = False
 
     if es_maestro:
         if request.method == 'POST':
@@ -49,4 +56,4 @@ def subiraviso(request):
 
             return render(request, "avisos/avisos.html", { "es_maestro": es_maestro, "avisos":avisos})
 
-    return render(request, "avisos/subiraviso.html", { "es_maestro": es_maestro})
+    return render(request, "avisos/subiraviso.html", {"es_maestro": es_maestro})

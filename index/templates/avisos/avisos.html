@@ -3,6 +3,11 @@
 {% block title %} Avisos {% endblock %}
 
 {% block content %}
+{% if msg %}
+        <p>
+            {{ msg }}
+        </p>
+{% endif %}
 
 <section class="avisos section">
         <h2 class="text-center my-5">Avisos</h2>

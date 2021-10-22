@@ -1,0 +1,38 @@
+{% extends "materias/base.html" %}
+
+{% block title %} Subir respuesta {% endblock %}
+
+{% block content %}
+
+<section class="mi-tarea section">
+    <div class="container" style="width: 500px;">
+        <h2 class="text-center my-5">Tareas</h2>
+        <h3>Tema: {{ tarea_obj.tema }}</h3>
+        <div class="card">
+            <div class="card-body">{{ tarea_obj.comentario}}</div>
+        </div>
+        <p>Fechá límite para la entrega: {{ tarea_obj.fechaLimite}}</p>
+        <a href="media/{{ tarea_obj.archivo }}">Abrir archivo en el navegador</a>
+        <a href="#" class="btn btn-primary" onclick="">Descargar archivo</a>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="tema" value="{{ tarea_obj.tema }}" />
+            <input type="hidden" name="materia_tarea" value="{{ tarea_obj.materia_tarea.id }}" />
+            <input type="hidden" name="comentario" value="{{ tarea_obj.comentario }}" />
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Sube tu tarea</label>
+                <input type="file" class="form-control-file" name="archivo" required/>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Comentarios para el maestro</label>
+                <textarea class="form-control" rows="3" name="comentario"></textarea>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+
+
+    </div>
+</section>
+
+{% endblock %}

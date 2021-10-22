@@ -19,7 +19,7 @@
             <li class="list-group-item">{{ tarea.tema }}</li>
             <li class="list-group-item">{{ tarea.fecha }}</li>
             <li class="list-group-item" style="border-top-right-radius: .25rem; border-bottom-right-radius: .25rem;">{{ tarea.fechaLimite }}</li>
-            <a href="{materias/ciencias_naturales}/{{tarea.id}}" class="btn btn-success btn-lg ml-2" role="button">Ver tarea</a>
+            <a href="{% url 'respuesta' tarea.id %}" class="btn btn-success btn-lg ml-2" role="button">Ver tarea</a>
             {% if es_maestro %}
             <a href="{% url 'cn_editar' tarea.id %}" class="btn btn-success btn-lg ml-2" role="button">Editar</a>
             <a href="{% url 'cn_eliminar' tarea.id %}" class="btn btn-success btn-lg ml-2" role="button">Eliminar</a>
