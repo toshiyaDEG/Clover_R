@@ -3,6 +3,7 @@ from datetime import date
 from django.db.models.deletion import SET_NULL
 from usuarios.models import Account
 
+
 class Materia(models.Model):
     """Define la tabla Materias"""
     materia = models.CharField(max_length=45)

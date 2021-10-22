@@ -32,7 +32,7 @@ button {
 
 h3 {
   color: #faf1e9;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 button {
@@ -59,6 +59,10 @@ h5 {
   font-size: 30px;
   text-decoration: none;
   color: #688f4e;
+}
+
+.portada{
+  margin:30px;
 }
 
 /*# sourceMappingURL=output.css.map */

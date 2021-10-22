@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import login, authenticate
 from usuarios.forms import RegistrationForm
 from usuarios.models import Account
@@ -8,6 +8,12 @@ from django.contrib.auth.decorators import login_required
 # View desde la cual el maestro puede registrar alumnos
 @login_required()
 def registration_view(request):
+    """Atiende la petición GET /usuarios"""
+    tipo = request.user.typo
+    if tipo == "teacher":
+        es_maestro = True
+    else:
+        es_maestro = False
     context = {}
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
@@ -40,3 +46,21 @@ def alumnos(request):
         es_maestro = False
 
     return render(request, "usuarios/alumnos.html", {"grupo":grupo, "es_maestro":es_maestro})
+
+# View para eliminar alumnos
+@login_required()
+def eliminar_alumno(request, id_alumno):
+    """Elimina usuarios de la lista de alumnos"""
+    # Validando si el usuario es maestro
+    tipo = request.user.typo
+    if tipo == "teacher":
+        es_maestro = True
+    else:
+        es_maestro = False
+
+
+    alumno = Account.objects.get(pk=id_alumno)
+    alumno.delete()
+
+    return redirect("/avisos", {"es_maestro":es_maestro})
+

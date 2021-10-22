@@ -13,7 +13,6 @@
         {% endif %}
 
         <h2 class="text-center my-5">Editor de tarea</h2>
-        <h3>Aquí puedes editar la tarea</h3>
 
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
@@ -26,7 +25,7 @@
                 <textarea class="form-control" rows="3" name="comentario" value="{{ tarea_obj.comentario }}">{{ tarea_obj.comentario }}</textarea>
             </div>
             <div class="form-group">
-                <label>Fecha de entrega actual: {{ tarea_obj.fechaLimite}}</label>
+                <label>Entregar: {{ tarea_obj.fechaLimite}}</label>
                 <input type="date" id="fechaLimite" name="fechaLimite" value="{{ tarea_obj.fechaLimite }}"/>
             </div>
             <div class="form-group">
