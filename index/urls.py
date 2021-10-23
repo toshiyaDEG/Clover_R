@@ -9,5 +9,5 @@ urlpatterns = [
     path('subiraviso/', views.subiraviso, name="nuevoaviso"),
     path("login/", auth_views.LoginView.as_view(template_name="login/login.html"), name="login"),
     path("logout/", auth_views.LogoutView.as_view(next_page="/login/"), name="logout"),
-    path('api/graphql/', GraphQLView.as_view(graphiql=True))
+    path('graphql/', GraphQLView.as_view(graphiql=True))
 ]
