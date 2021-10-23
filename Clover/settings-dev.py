@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'materias',
     'usuarios',
     'graphene_django',
+    'rest_framework',
 ]
 
 GRAPHENE = {

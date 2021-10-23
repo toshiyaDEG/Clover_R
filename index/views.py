@@ -1,10 +1,17 @@
+from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from index.models import Aviso
 
 from usuarios.models import Account
+from materias.models import Materia
 
+from .serializers import MateriaSerializer
+from .serializers import AvisoSerializer
 
+from rest_framework import viewsets
+
+import datetime
 
 def index(request):
     """Atiende la petición GET /"""
@@ -56,3 +63,28 @@ def subiraviso(request):
             return render(request, "avisos/avisos.html", { "es_maestro": es_maestro, "avisos":avisos})
 
     return render(request, "avisos/subiraviso.html", {"es_maestro": es_maestro})
+
+
+# Vistas basadas en clases para Django Rest
+class MateriaViewSet(viewsets.ModelViewSet):
+    """
+    API que permite realizar operaciones en la tabla Materia
+    """
+    # Se define el conjunto de datos sobre el que va a operar la vista,
+    # en este caso sobre todos los users disponibles.
+    queryset = Materia.objects.all().order_by('id')
+    # Se define el Serializador encargado de transformar la peticiones
+    # en formato JSON a objetos de Django y de Django a JSON.
+    serializer_class = MateriaSerializer
+
+
+class AvisoViewSet(viewsets.ModelViewSet):
+    """
+    API que permite realizar operaciones en la tabla Avisos
+    """
+    # Se define el conjunto de datos sobre el que va a operar la vista,
+    # en este caso sobre todos los users disponibles.
+    queryset = Aviso.objects.all().order_by('id')
+    # Se define el Serializador encargado de transformar la peticiones
+    # en formato JSON a objetos de Django y de Django a JSON.
+    serializer_class = AvisoSerializer
