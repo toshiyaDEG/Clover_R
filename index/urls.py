@@ -1,6 +1,7 @@
 from django.contrib.auth import views as auth_views
 from graphene_django.views import GraphQLView
 from django.urls import path
+from .schema import schema
 from . import views
 
 urlpatterns = [

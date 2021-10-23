@@ -29,7 +29,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # DEBUG = True
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
-ALLOWED_HOSTS = ["toshiyadeg.pythonanywhere.com"]
+ALLOWED_HOSTS = ["clover.pythonanywhere.com"]
 
 
 # Application definition
@@ -90,10 +90,10 @@ WSGI_APPLICATION = 'Clover.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ToshiyaDEG$Clover',
-        'USER': 'ToshiyaDEG',
+        'NAME': 'clover$Clover',
+        'USER': 'clover',
         'PASSWORD': 'Shinya191219',
-        'HOST': 'ToshiyaDEG.mysql.pythonanywhere-services.com',
+        'HOST': 'clover.mysql.pythonanywhere-services.com',
     }
 }
 
