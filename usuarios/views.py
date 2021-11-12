@@ -1,3 +1,4 @@
+from django.http.response import Http404
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import login, authenticate
 from usuarios.forms import RegistrationForm
@@ -63,4 +64,38 @@ def eliminar_alumno(request, id_alumno):
     alumno.delete()
 
     return redirect("/avisos", {"es_maestro":es_maestro})
+
+
+def editar_alumno(request, id_alumno):
+    """Atiende la petición GET /editar_alumno"""
+    alumno = Account.objects.get(pk=id_alumno)
+
+    tipo = request.user.typo
+    if tipo == "teacher":
+        es_maestro = True
+    else:
+        es_maestro = False
+
+    if es_maestro:
+        if request.method == 'POST':
+            username_f = request.POST.get("username")
+            email_f = request.POST.get("email")
+            first_name = request.POST.get("first_name")
+            last_name = request.POST.get("last_name")
+
+            alumno.username=username_f
+            alumno.email=email_f
+            alumno.first_name=first_name
+            alumno.last_name=last_name
+            alumno.save()
+
+            return HttpResponse("Alumno editado correctamente")
+        return render(request, "usuarios/edit_alumno.html",
+    {
+        "es_maestro":es_maestro,
+        "alumno":alumno
+    }
+    )
+    else:
+        raise Http404("No tienes permiso para editar")
 

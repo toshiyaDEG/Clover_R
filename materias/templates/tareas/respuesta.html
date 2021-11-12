@@ -12,8 +12,8 @@
             <div class="card-body">{{ tarea_obj.comentario}}</div>
         </div>
         <p>Fechá límite para la entrega: {{ tarea_obj.fechaLimite}}</p>
-        <a href="media/{{ tarea_obj.archivo }}">Abrir archivo en el navegador</a>
-        <a href="#" class="btn btn-primary" onclick="">Descargar archivo</a>
+        <a href="media/{{ tarea_obj.archivo }}">Ver</a>
+        <a href="media/{{ tarea_obj.archivo }}" download="" class="btn btn-primary">Descargar archivo</a>
 
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
