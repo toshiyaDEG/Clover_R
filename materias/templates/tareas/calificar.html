@@ -1,0 +1,30 @@
+{% extends "materias/base.html" %}
+
+{% block title %} Subir respuesta {% endblock %}
+
+{% block content %}
+
+<section class="mi-tarea section">
+    <div class="container" style="width: 500px;">
+        <h2 class="text-center my-5">Tarea a calificar</h2>
+        <h3>{{ respuesta_obj.materia_tarea}}: {{ respuesta_obj.tema }}</h3>
+        <p>Límite de entrega: {{ respuesta_obj.fecha}}</p>
+        <p>Comentarios del alumno: {{ respuesta_obj.comentario}}</p>
+        <a href="media/{{ respuesta_obj.archivo }}">Ver</a>
+        <a href="media/{{ respuesta_obj.archivo }}" download="" class="btn btn-primary">Descargar archivo</a>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% if es_maestro %}
+            <label>Calificación</label>
+            <input type="number" min="0" max="10" step="0.1" name="calificacion" />
+            {% endif %}
+            <button type="submit">Enviar</button>
+        </form>
+
+
+    </div>
+</section>
+
+{% endblock %}
+

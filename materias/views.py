@@ -3,7 +3,7 @@ from django.http import Http404
 from django.http.request import HttpRequest
 from django.shortcuts import render, HttpResponse, redirect
 from usuarios.models import Account
-from .models import Tarea, Materia, Respuesta
+from .models import Tarea, Materia, Respuesta, user_directory_path
 
 
 # Views de las materias, menú general e individuales.
@@ -125,6 +125,11 @@ def respuesta(request, id_tarea):
     else:
         es_maestro = False
 
+    if tipo == "student":
+        es_alumno = True
+    else:
+        es_alumno = False
+
     if request.method == 'POST':
         #materia_f = request.POST.get("materia_tarea2", None)
         tema_f = request.POST.get("tema")
@@ -153,6 +158,7 @@ def respuesta(request, id_tarea):
             "tarea_cn":tarea_cn,
             "tarea_obj":tarea_obj,
             "es_maestro":es_maestro,
+            "es_alumno":es_alumno,
             "materias":materias
         }
     )
@@ -262,3 +268,58 @@ def editar(request, id_tarea):
         )
     else:
         raise Http404("No tienes permiso de editar")
+
+
+@login_required()
+def revisar_tareas(request, id_alumno):
+    """Muestra las tareas de 1 determinado alumno"""
+    tipo = request.user.typo
+    if tipo == "teacher":
+        es_maestro = True
+    else:
+        es_maestro = False
+    if es_maestro:
+        alumno = Account.objects.get(pk=id_alumno)
+        respuestas = Respuesta.objects.filter(user_id=id_alumno)
+        print(respuestas)
+        print(alumno)
+        return render(request, "tareas/revisar_tareas.html",
+        {
+            "es_maestro":es_maestro,
+            "alumno":alumno,
+            "respuestas":respuestas,
+        }
+        )
+    else:
+        raise Http404("No tienes permisos")
+
+
+@login_required()
+def calificar(request, id_respuesta):
+    """Atiende la peiticón GET /calificar para cada tarea individual"""
+    respuesta_obj = Respuesta.objects.get(pk=id_respuesta)
+    materias = Materia.objects.all()
+    print(respuesta_obj)
+    tipo = request.user.typo
+    if tipo == "teacher":
+        es_maestro = True
+    else:
+        es_maestro = False
+
+    if es_maestro:
+        if request.method == 'POST':
+            calificacion_f =request.POST.get("calificacion")
+            respuesta_obj.calificacion = calificacion_f
+            respuesta_obj.save()
+
+            return HttpResponse("La tarea se ha calificado correctamente")
+
+        return render(request, "tareas/calificar.html",
+        {
+            "respuesta_obj":respuesta_obj,
+            "es_maestro":es_maestro,
+            "materias":materias,
+        }
+        )
+    else:
+        raise Http404("No tienes permisos")

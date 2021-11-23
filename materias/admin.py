@@ -13,7 +13,7 @@ class TareaAdmin(admin.ModelAdmin):
 
 class RespuestaAdmin(admin.ModelAdmin):
     # Sobre escribe lo que hace __str__
-    list_display = ("id", "user", "tema", "materia_tarea", "fecha", "comentario")
+    list_display = ("id", "user", "tema", "calificacion", "materia_tarea", "fecha", "comentario")
 
 admin.site.register(Materia, MateriaAdmin)
 admin.site.register(Tarea, TareaAdmin)

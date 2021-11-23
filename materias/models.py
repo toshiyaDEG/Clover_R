@@ -42,6 +42,7 @@ class Respuesta(models.Model):
     tema = models.CharField(max_length=45, default="Tema", null=False, blank=False)
     comentario = models.CharField(max_length=255, null=True, blank=True)
     fecha = models.DateField(default=date.today)
+    calificacion = models.FloatField(null=True, blank=True)
     archivo = models.FileField(upload_to=user_directory_path,
                             null=True,blank=True, max_length=256)
 

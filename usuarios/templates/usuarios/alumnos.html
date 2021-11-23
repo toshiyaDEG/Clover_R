@@ -10,9 +10,11 @@
         <h3>Nombres(s) : Apellidos : Correo</h3>
         {% for alumno in grupo %}
         <ul class="list-group list-group-horizontal-sm" style="margin-top:10px; margin-bottom: 10px;">
+            <li class="list-group-item">{{ alumno.id }}</li>
             <li class="list-group-item w-25">{{ alumno.first_name }}</li>
             <li class="list-group-item w-25">{{ alumno.last_name }}</li>
             <li class="list-group-item w-25">{{ alumno.email }}</li>
+            <a href="{% url 'revisar_tareas' alumno.id %}" class="btn btn-success btn-lg ml-2" role="button">Revisar tareas</a>
             <a href="{% url 'editar_alumno' alumno.id %}" class="btn btn-success btn-lg ml-2" role="button">Editar</a>
             <a href="{% url 'eliminar_alumno' alumno.id %}" class="btn btn-success btn-lg ml-2" role="button">Eliminar</a>
         </ul>
