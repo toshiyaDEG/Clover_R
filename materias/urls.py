@@ -10,6 +10,7 @@ from .models import Tarea
 urlpatterns = [
     path('', views.materias, name="materias"),
     path('calificar/<int:id_respuesta>/', views.calificar, name="calificar"),
+    path('calificaciones/<int:id_user>/', views.calificaciones, name="calificaciones"),
     path('ciencias_naturales/', views.ciencias_naturales, name="ciencias_naturales"),
     path('desafios_matematicos/', views.desafios_matematicos, name="desafios_matematicos"),
     path('educacion_civica/', views.educacion_civica, name="educacion_civica"),

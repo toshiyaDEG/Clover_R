@@ -281,8 +281,6 @@ def revisar_tareas(request, id_alumno):
     if es_maestro:
         alumno = Account.objects.get(pk=id_alumno)
         respuestas = Respuesta.objects.filter(user_id=id_alumno)
-        print(respuestas)
-        print(alumno)
         return render(request, "tareas/revisar_tareas.html",
         {
             "es_maestro":es_maestro,
@@ -323,3 +321,17 @@ def calificar(request, id_respuesta):
         )
     else:
         raise Http404("No tienes permisos")
+
+
+@login_required()
+def calificaciones(request, id_user):
+    """Muestra las calificaciones de todas sus tareas a cada alumno"""
+    alumno = Account.objects.get(pk=id_user)
+    tareas = Respuesta.objects.filter(user=alumno)
+
+    return render(request, "tareas/calificaciones.html",
+        {
+        "alumno":alumno,
+        "tareas":tareas,
+        }
+    )
