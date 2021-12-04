@@ -5,6 +5,8 @@ $color-base: #2b463c;
 $color-title: #688f4e;
 $color-text: #b1d182;
 $color-light: #faf1e9;
+$color-back1: #607213;
+$color-back2: #2b463c;
 
 //fuente
 $font-title: "Lobster Two", cursive;
@@ -32,7 +34,13 @@ $font-title: "Lobster Two", cursive;
     vertical-align: center;
     font-weight: 400;
     border: none;
-    
+}
+
+%mini-title {
+    font-size: 10px;
+    color: $color-light;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 

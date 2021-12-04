@@ -37,7 +37,6 @@ h5 {
     font-size: 30px;
     text-decoration: none;
     color: $color-title;
-
 }
 
 .mini-title {
@@ -45,25 +44,25 @@ h5 {
     margin-bottom: 50px;
     margin-top: -15px;
 }
-
 button {
     @extend %button-clover;
-    transition: color 1s ease-in-out;
-    background-color: color .1s ease-in-out;
+    transition: 1s ease-in-out;
 }
 
 button:hover {
-    background-color: $color-text;
-    color: $color-base;
+    background-color: $color-base;
+    color: $color-text;
 }
 .section {
     padding-bottom: 80px;
 }
 
-.menu-materias a{
+.menu-materias {
+    a{
         text-decoration: none;
-    .card-img-overlay {
-        align-items: center;
+        .card-img-overlay {
+            align-items: center;
+        }
     }
 }
 
@@ -72,10 +71,33 @@ button:hover {
         margin-top: 60px;
     }
 
-    .section .container {
-        max-width: 300px;
+    section {
+        .menu-materias {
+            .container {
+                max-width: 300px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                justify-items: center;
+                align-content: center;
+                gap: 50px;
+                .botoncito {
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    align-items: center;
+                    justify-items: center;
+                    align-content: center;
+                    gap: 50px;
+                }
+            }
+        }
     }
-    }
+}
+
 
     .nav-link {
         background-color: #343a40;
@@ -190,6 +212,9 @@ button:hover {
         text-decoration: none;
     }
 
+    .botoncito button a:hover {
+        text-decoration: none;
+    }
     .lista {
         background-color: $color-light;
         border-radius: 5px;

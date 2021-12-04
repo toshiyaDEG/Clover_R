@@ -60,7 +60,12 @@ def subiraviso(request):
             aviso.imagen=imagen_f
             aviso.save()
 
-            return render(request, "avisos/avisos.html", { "es_maestro": es_maestro, "avisos":avisos})
+            msg ="Anuncio publicado correctamente"
+
+            return render(request, "avisos/subiraviso.html", {
+                "msg":msg,
+                "es_maestro": es_maestro,
+                "avisos":avisos})
 
     return render(request, "avisos/subiraviso.html", {"es_maestro": es_maestro})
 

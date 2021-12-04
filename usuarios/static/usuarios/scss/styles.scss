@@ -48,16 +48,16 @@ h5 {
 
 button {
     @extend %button-clover;
-    transition: color 1s ease-in-out;
-    background-color: color .1s ease-in-out;
+    transition: 1s ease-in-out;
 }
 
 button:hover {
-    background-color: $color-text;
-    color: $color-base;
+    background-color: $color-base;
+    color: $color-text;
 }
 .section {
     padding-bottom: 80px;
+    margin: 0 auto;
 }
 
 .menu-materias a{
@@ -67,9 +67,119 @@ button:hover {
     }
 }
 
+.button {
+    display: inline-block;
+    background-color: $color-title;
+    color: $color-light;
+    border-radius: 10px;
+    text-align: center;
+    padding: .375rem .75rem;
+    font-weight: 400;
+    border: none;
+    text-decoration: none;
+}
+
+.button a {
+    text-decoration: none;
+}
+
+.box-c{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    .clover-box {
+        // width:800px;
+        height:auto;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap:5px;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        .clover-alu {
+            // width:800px;
+            height: auto;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap:5px;
+            .clo-datos {
+                display: flex;
+                flex-direction: row;
+                .clo-li {
+                    width: 270px;
+                    height:36px;
+                    padding: 5px;
+                    display: inline-block;
+                    list-style-type:none;
+                    background-color: $color-light;
+                    border-top-right-radius: 0.25rem;
+                    border-bottom-right-radius: 0.25rem;
+                    color: #212529;
+                }
+                .clo-num {
+                    height:36px;
+                    padding: 5px 10px;
+                    display: inline-block;
+                    list-style-type:none;
+                    background-color: $color-light;
+                    border-top-left-radius: 0.25rem;
+                    border-bottom-left-radius: 0.25rem;
+                    color: #212529;
+                }
+            }
+            .clo-botones {
+                a {
+                    // display: inline-block;
+                    background-color: $color-title;
+                    color: $color-light;
+                    border-radius: 10px;
+                    text-align: center;
+                    vertical-align: center;
+                    font-weight: 400;
+                    border: none;
+                    text-decoration: none;
+                    transition: 1s ease-in-out;
+                }
+                a:hover {
+                    background-color: $color-base;
+                    color: $color-text;
+                }
+            }
+        }
+    }
+}
+
 @media (max-width: 426px) {
     .main {
         margin-top: 60px;
+    }
+
+    .box-c {
+        .clover-box {
+            .clover-alu{
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 10px;
+                .clo-datos {
+                    font-size: 0.8rem;
+                    .clo-li {
+                        width:210px;
+                        height:30px;
+                    }
+                    .clo-num{
+                        height:30px;
+                    }
+                }
+            }
+        }
     }
 
     .section .container {

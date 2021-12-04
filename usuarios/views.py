@@ -52,6 +52,7 @@ def alumnos(request):
 @login_required()
 def eliminar_alumno(request, id_alumno):
     """Elimina usuarios de la lista de alumnos"""
+    grupo = Account.objects.filter(typo = "student")
     # Validando si el usuario es maestro
     tipo = request.user.typo
     if tipo == "teacher":
@@ -63,7 +64,13 @@ def eliminar_alumno(request, id_alumno):
     alumno = Account.objects.get(pk=id_alumno)
     alumno.delete()
 
-    return redirect("/avisos", {"es_maestro":es_maestro})
+    msg ="Alumno eliminado"
+
+    return render(request, "usuarios/alumnos.html", {
+        "msg":msg,
+        "grupo":grupo,
+        "es_maestro":es_maestro
+    })
 
 
 def editar_alumno(request, id_alumno):
@@ -89,7 +96,12 @@ def editar_alumno(request, id_alumno):
             alumno.last_name=last_name
             alumno.save()
 
-            return HttpResponse("Alumno editado correctamente")
+            msg ="Alumno editado correctamente"
+            # return HttpResponse("Alumno editado correctamente")
+            return render(request, "usuarios/edit_alumno.html", {
+                "msg":msg,
+                "es_maestro":es_maestro,
+            })
         return render(request, "usuarios/edit_alumno.html",
     {
         "es_maestro":es_maestro,

@@ -5,21 +5,32 @@
 {% block content %}
 
 <section class="section">
-    <div class="container-sm" style="width: 800px;">
+    <div class="container-sm">
         <h2 class="text-center my-5">Lista de alumnos</h2>
-        <h3>Nombres(s) : Apellidos : Correo</h3>
-        {% for alumno in grupo %}
-        <ul class="list-group list-group-horizontal-sm" style="margin-top:10px; margin-bottom: 10px;">
-            <li class="list-group-item">{{ alumno.id }}</li>
-            <li class="list-group-item w-25">{{ alumno.first_name }}</li>
-            <li class="list-group-item w-25">{{ alumno.last_name }}</li>
-            <li class="list-group-item w-25">{{ alumno.email }}</li>
-            <a href="{% url 'revisar_tareas' alumno.id %}" class="btn btn-success btn-lg ml-2" role="button">Revisar tareas</a>
-            <a href="{% url 'editar_alumno' alumno.id %}" class="btn btn-success btn-lg ml-2" role="button">Editar</a>
-            <a href="{% url 'eliminar_alumno' alumno.id %}" class="btn btn-success btn-lg ml-2" role="button">Eliminar</a>
-        </ul>
-        {% endfor %}
 
+        {% if msg %}
+            <div class="alert alert-success text-center" role="alert">
+                <h3 class="alert-heading">{{ msg }}</h3>
+            </div>
+        {% endif %}
+
+        <div class="box-c">
+            {% for alumno in grupo %}
+            <div class="clover-box">
+                <div class="clover-alu">
+                    <div class="clo-datos">
+                        <li class="clo-num">{{ alumno.id }}</li>
+                        <li class="clo-li">{{ alumno.first_name }} {{ alumno.last_name }}</li>
+                    </div>
+                    <div class="clo-botones">
+                        <a href="{% url 'revisar_tareas' alumno.id %}" class="button" role="button">Tareas</a>
+                        <a href="{% url 'editar_alumno' alumno.id %}" class="button" role="button">Editar</a>
+                        <a href="{% url 'eliminar_alumno' alumno.id %}" class="button" role="button">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 </section>
 

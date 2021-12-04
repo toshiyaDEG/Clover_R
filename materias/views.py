@@ -198,10 +198,17 @@ def subirtarea(request, msg=""):
             tarea.archivo=archivo_f
             tarea.save()
 
-            return HttpResponse("La tarea se ha publicado correctamente")
+            msg ="La tarea se ha publicado correctamente"
+            # return HttpResponse("La tarea se ha publicado correctamente")
+            return render(request, "tareas/subirtarea.html", {
+                "msg":msg,
+                "es_maestro":es_maestro,
+                "materias":materias
+            }
+            )
     return render(request, "tareas/subirtarea.html",{
         "es_maestro":es_maestro,
-        "materias":materias
+        "materias":materias,
         }
     )
 
