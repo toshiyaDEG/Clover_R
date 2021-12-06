@@ -1,23 +1,31 @@
 {% extends "materias/base.html" %}
 
-{% block title %} Subir respuesta {% endblock %}
+{% block title %} Revisar tareas {% endblock %}
 
 {% block content %}
 
-<section class="mi-tarea section">
-    <div class="container-sm" style="width: 800px;">
-            <h2 class="text-center my-5">Tareas</h2>
-            <h3>Alumno: {{ alumno.first_name }}</h3>
+<section class="section">
+    <div class="container-sm">
+        <h2 class="text-center my-5">Tareas</h2>
+
+        <div class="box-c">
+            <h3 class="clo-textsub">Alumno: {{ alumno.first_name }}</h3>
             {% for r in respuestas %}
-            <ul class="list-group list-group-horizontal-sm" style="margin-top:10px; margin-bottom: 10px;">
-                <li class="list-group-item">{{ r.id }}</li>
-                <li class="list-group-item">{{ r.materia_tarea }}</li>
-                <li class="list-group-item w-25">{{ r.tema }}</li>
-                <li class="list-group-item">{{ r.fecha }}</li>
-                <li class="list-group-item">{{ r.calificacion }}</li>
-                <a href="{% url 'calificar' r.id %}" class="btn btn-success btn-lg ml-2" role="button">Calificar</a>
-            </ul>
-                {% endfor %}
+            <div class="clover-box">
+                <div class="clover-alu">
+                    <div class="clo-datos">
+                        <li class="clo-num"><b>{{ r.id }}</b></li>
+                        <li class="clo-li2">{{ r.materia_tarea }}</li>
+                        <li class="clo-li2">{{ r.tema }}</li>
+                        <li class="clo-num2">{{ r.calificacion }}</li>
+                    </div>
+                    <div class="clo-botones">
+                        <a href="{% url 'calificar' r.id %}" class="button" role="button">Calificar</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 </section>
 

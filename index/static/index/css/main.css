@@ -70,25 +70,33 @@ h5 {
 }
 
 button {
-  transition: color 1s ease-in-out;
-  background-color: color .1s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 button:hover {
-  background-color: #b1d182;
-  color: #2b463c;
+  background-color: #2b463c;
+  color: #b1d182;
 }
 
 .section {
   padding-bottom: 80px;
 }
 
-.menu-materias a {
+.button {
+  display: inline-block;
+  background-color: #688f4e;
+  color: #faf1e9;
+  border-radius: 10px;
+  text-align: center;
+  padding: .375rem .75rem;
+  font-weight: 400;
+  border: none;
   text-decoration: none;
+  transition: 0.5s ease-in-out;
 }
 
-.menu-materias a .card-img-overlay {
-  align-items: center;
+.button a {
+  text-decoration: none;
 }
 
 @media (max-width: 426px) {

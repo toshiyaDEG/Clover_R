@@ -6,13 +6,13 @@
 
 <section class="mi-tarea section">
     <div class="container" style="width: 500px;">
-        {% if msg %}
-        <p>
-            {{ msg }}
-        </p>
-        {% endif %}
-
         <h2 class="text-center my-5">Editor de tarea</h2>
+
+        {% if msg %}
+        <div class="alert alert-success text-center" role="alert">
+            <h3 class="alert-heading">{{ msg }}</h3>
+        </div>
+        {% endif %}
 
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
@@ -45,7 +45,7 @@
                 <input class="form-control-file" type="file" name="archivo"value="{{ tarea_obj.archivo }}"required/>
             </div>
             <button type="submit">Enviar</button>
-            <a class="btn" href="{% url 'avisos' %}">Cancelar</a>
+            <a class="button" href="{% url 'avisos' %}">Cancelar</a>
         </form>
     </div><!--cerrando div container-->
 </section>

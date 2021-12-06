@@ -5,16 +5,21 @@
 {% block content %}
 
 <section class="section">
-    <div class="container-sm" style="width: 800px;">
+    <div class="container-sm">
         <h2 class="text-center my-5">Mis Calificaciones</h2>
-        <h3>Tema : Calificación</h3>
-        {% for t in tareas %}
-        <ul class="list-group list-group-horizontal-sm" style="margin-top:10px; margin-bottom: 10px;">
-            <li class="list-group-item">{{ t.tema }}</li>
-            <li class="list-group-item w-25">{{ t.calificacion}}</li>
-        </ul>
-        {% endfor %}
-
+        <div class="box-c">
+            <h3 class="clo-textsub">Tema : Calificación</h3>
+            {% for t in tareas %}
+            <div class="clover-box">
+                <div class="clover-alu">
+                    <div class="clo-datos">
+                        <li class="clo-li3">{{ t.tema }}</li>
+                        <li class="clo-num2">{{ t.calificacion }}</li>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 </section>
 

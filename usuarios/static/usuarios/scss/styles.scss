@@ -48,7 +48,7 @@ h5 {
 
 button {
     @extend %button-clover;
-    transition: 1s ease-in-out;
+    transition: 0.5s ease-in-out;
 }
 
 button:hover {
@@ -185,7 +185,7 @@ button:hover {
     .section .container {
         max-width: 300px;
     }
-    }
+}
 
     .nav-link {
         background-color: #343a40;

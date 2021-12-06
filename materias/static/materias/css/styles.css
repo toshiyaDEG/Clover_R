@@ -1,3 +1,5 @@
+@use 'global' as *;
+@use 'global';
 h2 {
   color: #b1d182;
   font-family: "Lobster Two", cursive;
@@ -10,14 +12,13 @@ h2:hover {
   color: #688f4e;
 }
 
-button {
+.card-body button, button {
   display: inline-block;
   background-color: #688f4e;
   color: #faf1e9;
   border-radius: 10px;
   text-align: center;
   padding: .375rem .75rem;
-  vertical-align: center;
   font-weight: 400;
   border: none;
 }
@@ -68,7 +69,7 @@ h5 {
 }
 
 button {
-  transition: 1s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 button:hover {
@@ -88,30 +89,173 @@ button:hover {
   align-items: center;
 }
 
+.button {
+  display: inline-block;
+  background-color: #688f4e;
+  color: #faf1e9;
+  border-radius: 10px;
+  text-align: center;
+  padding: .375rem .75rem;
+  font-weight: 400;
+  border: none;
+  text-decoration: none;
+  transition: 0.5s ease-in-out;
+}
+
+.button a {
+  text-decoration: none;
+}
+
+.box-c {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.box-c a {
+  color: #faf1e9;
+  text-decoration: none;
+  transition: 0.5 ease-in-out;
+}
+
+.box-c a:hover {
+  background-color: #2b463c;
+  color: #b1d182;
+}
+
+.box-c .clover-box {
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.box-c .clover-box .clover-alu {
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.box-c .clover-box .clover-alu .clo-datos {
+  display: flex;
+  flex-direction: row;
+}
+
+.box-c .clover-box .clover-alu .clo-datos .clo-li {
+  width: 270px;
+  height: 36px;
+  padding: 5px;
+  display: inline-block;
+  list-style-type: none;
+  background-color: #faf1e9;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  color: #212529;
+}
+
+.box-c .clover-box .clover-alu .clo-datos .clo-li2 {
+  width: 220px;
+  height: 36px;
+  padding: 5px;
+  display: inline-block;
+  list-style-type: none;
+  background-color: #faf1e9;
+  color: #212529;
+}
+
+.box-c .clover-box .clover-alu .clo-datos .clo-li3 {
+  width: 200px;
+  height: 36px;
+  padding: 5px;
+  color: #212529;
+  display: inline-block;
+  list-style-type: none;
+  background-color: #faf1e9;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.box-c .clover-box .clover-alu .clo-datos .clo-num {
+  height: 36px;
+  width: 40px;
+  padding: 5px 10px;
+  display: inline-block;
+  list-style-type: none;
+  background-color: #faf1e9;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  color: #212529;
+}
+
+.box-c .clover-box .clover-alu .clo-datos .clo-num2 {
+  height: 36px;
+  width: 60px;
+  padding: 5px 10px;
+  display: inline-block;
+  list-style-type: none;
+  background-color: #faf1e9;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  color: #212529;
+}
+
+.box-c .clover-box .clover-alu .clo-botones a {
+  background-color: #688f4e;
+  color: #faf1e9;
+  border-radius: 10px;
+  text-align: center;
+  vertical-align: center;
+  font-weight: 400;
+  border: none;
+  text-decoration: none;
+  transition: 0.5s ease-in-out;
+}
+
+.box-c .clover-box .clover-alu .clo-botones a:hover {
+  background-color: #2b463c;
+  color: #b1d182;
+}
+
 @media (max-width: 426px) {
   .main {
     margin-top: 60px;
   }
-  section .menu-materias .container {
-    max-width: 300px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-    align-content: center;
-    gap: 50px;
-  }
   section .menu-materias .container .botoncito {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+  }
+  .box-c .clover-box .clover-alu .clo-datos {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
-    justify-items: center;
-    align-content: center;
-    gap: 50px;
+  }
+  .box-c .clover-box .clover-alu .clo-datos .clo-num {
+    width: 220px;
+    margin-top: 15px;
+    border-radius: 0.25rem 0.25rem 0 0;
+  }
+  .box-c .clover-box .clover-alu .clo-datos .clo-num2 {
+    width: 220px;
+    border-radius: 0 0 0.25rem 0.25rem;
+  }
+  .box-c .clover-box .clover-alu .clo-datos .clo-li {
+    border-radius: 0 0 0.25rem 0.25rem;
+  }
+  .box-c .clover-box .clover-alu .clo-datos .clo-li3 {
+    width: 220px;
+    border-radius: 0.25rem 0.25rem 0 0;
   }
 }
 
@@ -215,23 +359,35 @@ small {
   gap: 50px;
 }
 
-.botoncito button {
+.botoncito a {
   width: 200px;
   height: 200px;
   background-image: url("https://imgur.com/uNTrhKK.png");
   box-shadow: 4px 4px 5px #faf1e9;
-}
-
-.botoncito button a {
   font-size: 30px;
-  color: #faf1e9;
   font-weight: 600;
   line-height: 1;
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s ease-in;
 }
 
-.botoncito button a:hover {
+.botoncito a span {
+  color: #faf1e9;
+  margin: auto;
+  transition: 0.5s ease-in;
+}
+
+.botoncito a:hover {
+  background-color: #2b463c;
+}
+
+.botoncito a:hover span {
   text-decoration: none;
+  color: #607213;
 }
 
 .lista {
@@ -259,4 +415,22 @@ small {
   font-size: 12px;
   border: 1px solid #688f4e;
   padding: 10px;
+}
+
+.clo-text1 {
+  color: #212529;
+}
+
+.clo-textsub {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.card-body button {
+  transition: 0.5s ease-in-out;
+}
+
+.card-body button:hover {
+  background-color: #2b463c;
+  color: #b1d182;
 }

@@ -1,17 +1,28 @@
 {% extends "materias/base.html" %}
 
-{% block title %} Subir respuesta {% endblock %}
+{% block title %} Calificar tarea {% endblock %}
 
 {% block content %}
 
 <section class="mi-tarea section">
     <div class="container" style="width: 500px;">
         <h2 class="text-center my-5">Tarea a calificar</h2>
-        <h3>{{ respuesta_obj.materia_tarea}}: {{ respuesta_obj.tema }}</h3>
-        <p>Límite de entrega: {{ respuesta_obj.fecha}}</p>
-        <p>Comentarios del alumno: {{ respuesta_obj.comentario}}</p>
-        <a href="media/{{ respuesta_obj.archivo }}">Ver</a>
-        <a href="media/{{ respuesta_obj.archivo }}" download="" class="btn btn-primary">Descargar archivo</a>
+
+        {% if msg %}
+        <div class="alert alert-success text-center" role="alert">
+            <h3 class="alert-heading">{{ msg }}</h3>
+        </div>
+        {% endif %}
+
+        <div class="card mb-3">
+            <h5 class="card-header">{{ respuesta_obj.materia_tarea}}</h5>
+            <div class="card-body">
+                <p class="card-title clo-textsub">{{ respuesta_obj.tema }}</p>
+                <p class="card-text clo-text1"><b>Límite de entrega:</b> {{ respuesta_obj.fecha}}</p>
+                <p class="card-text clo-text2"><b>Comentarios del alumno:</b> {{ respuesta_obj.comentario}}</p>
+                <a href="media/{{ respuesta_obj.archivo }}" download="" class="button">Descargar archivo</a>
+            </div>
+        </div>
 
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}

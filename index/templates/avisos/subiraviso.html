@@ -6,7 +6,6 @@
 
 <section class="mi-tarea section">
     <div class="container" style="width: 500px;">
-
         <h2 class="text-center mt-5">Subir aviso</h2>
         <div class="mini-title text-center">Información para el nuevo aviso</div>
 
@@ -26,13 +25,12 @@
                 <label>Contenido</label>
                 <textarea class="form-control" rows="3" name="contenido"></textarea>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label>Selecciona la imagen</label>
                 <input class="form-control-file" type="file" name="imagen" />
             </div>
             <button type="submit">Enviar</button>
-            <a class="btn" href="{% url 'avisos' %}">Cancelar</a>
-
+            <a class="button" href="{% url 'avisos' %}">Cancelar</a>
         </form>
     </div>
 </section>

@@ -48,24 +48,36 @@ h5 {
 
 button {
     @extend %button-clover;
-    transition: color 1s ease-in-out;
-    background-color: color .1s ease-in-out;
+    transition: 0.5s ease-in-out;
 }
 
 button:hover {
-    background-color: $color-text;
-    color: $color-base;
+    background-color: $color-base;
+    color: $color-text;
 }
 .section {
     padding-bottom: 80px;
 }
 
-.menu-materias a{
+.button {
+    display: inline-block;
+    background-color: $color-title;
+    color: $color-light;
+    border-radius: 10px;
+    text-align: center;
+    padding: .375rem .75rem;
+    font-weight: 400;
+    border: none;
+    text-decoration: none;
+    transition: 0.5s ease-in-out;
+}
+
+.button {
+    a {
         text-decoration: none;
-    .card-img-overlay {
-        align-items: center;
     }
 }
+
 
 @media (max-width: 426px) {
     .main {

@@ -152,7 +152,15 @@ def respuesta(request, id_tarea):
         respuesta.archivo=archivo_f
         respuesta.save()
 
-        return HttpResponse("Tu archivo se ha subido correctamente")
+        msg = "Tarea entregada correctamente"
+
+        return render(request, "tareas/respuesta.html",{
+            "msg":msg,
+            "es_maestro":es_maestro,
+            "es_alumno":es_alumno,
+            "materias":materias
+            }
+        )
 
     return render(request, "tareas/respuesta.html",{
             "tarea_cn":tarea_cn,
@@ -262,7 +270,15 @@ def editar(request, id_tarea):
             tarea_obj.materia_tarea= materia_f
             tarea_obj.save()
 
-            return HttpResponse("La tarea se ha editado correctamente")
+            msg = "Tarea editada correctamente"
+            return render(request, "materias/editar.html",
+            {
+            "tarea_cn":tarea_cn,
+            "msg":msg,
+            "es_maestro":es_maestro,
+            "materias":materias
+            }
+            )
 
         # Trabajando GET
         return render(request, "materias/editar.html",
@@ -317,7 +333,14 @@ def calificar(request, id_respuesta):
             respuesta_obj.calificacion = calificacion_f
             respuesta_obj.save()
 
-            return HttpResponse("La tarea se ha calificado correctamente")
+            msg = "Tarea calificada"
+
+            return render(request, "tareas/calificar.html",{
+            "es_maestro":es_maestro,
+            "materias":materias,
+            "msg":msg
+            }
+        )
 
         return render(request, "tareas/calificar.html",
         {

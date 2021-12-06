@@ -5,35 +5,65 @@
 {% block content %}
 
 <section class="mi-tarea section">
-    <div class="container" style="width: 500px;">
-        <h2 class="text-center my-5">Tareas</h2>
-        <h3>Tema: {{ tarea_obj.tema }}</h3>
+    <div class="container-sm" style="width: 500px;">
+        <h2 class="text-center mt-5">Tareas</h2>
+        <div class="mini-title text-center">Explicación de la tarea</div>
+
+        {% if msg %}
+        <div class="alert alert-success text-center" role="alert">
+            <h3 class="alert-heading">{{ msg }}</h3>
+        </div>
+        {% endif %}
+
+        <div class="card mb-3">
+            <h5 class="card-header">Tema: {{ tarea_obj.tema }}</h5>
+            <div class="card-body">
+                <p class="card-title clo-textsub"><b>Límite de entrega:</b> {{ tarea_obj.fechaLimite}}</p>
+                <p class="card-text clo-text1"><b>Comentarios del profesor:</b> {{ tarea_obj.comentario}}</p>
+                <a href="media/{{ tarea_obj.archivo }}" download="" class="button">Descargar archivo</a>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <h5 class="card-header">Tu respuesta</h5>
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name="tema" value="{{ tarea_obj.tema }}" />
+                    <input type="hidden" name="materia_tarea" value="{{ tarea_obj.materia_tarea.id }}" />
+                    <input type="hidden" name="comentario" value="{{ tarea_obj.comentario }}" />
+                    <label class="card-text clo-text1">Aquí sube la evidencia de tu tarea.</label>
+                    <input type="file" class="form-control-file" name="archivo" required/>
+                    <label class="card-text clo-text1 mt-3">Comentarios para el maestro:</label>
+                    <textarea class="form-control mb-3" rows="3" name="comentario"></textarea>
+                    {% if es_maestro %}
+                    <label class="card-text clo-text1 mt-3"><b>Calificación</b></label>
+                    <input type="number" min="0" max="10" step="0.1" name="calificacion" />
+                    {% endif %}
+                    <button type="submit">Enviar</button>
+        </form>
+        </div>
+
+        <!-- <h3 class="">Tema: {{ tarea_obj.tema }}</h3>
         <p>Límite de entrega: {{ tarea_obj.fechaLimite}}</p>
         <div class="card">
             <div class="card-body">{{ tarea_obj.comentario}}</div>
         </div>
         <a href="media/{{ tarea_obj.archivo }}">Ver</a>
-        <a href="media/{{ tarea_obj.archivo }}" download="" class="btn btn-primary">Descargar archivo</a>
+        <a href="media/{{ tarea_obj.archivo }}" download="" class="btn btn-primary">Descargar archivo</a> -->
 
-        <form method="POST" enctype="multipart/form-data">
+        <!-- <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="hidden" name="tema" value="{{ tarea_obj.tema }}" />
             <input type="hidden" name="materia_tarea" value="{{ tarea_obj.materia_tarea.id }}" />
             <input type="hidden" name="comentario" value="{{ tarea_obj.comentario }}" />
-            <div class="form-group">
-                <label for="exampleFormControlFile1">Sube tu tarea</label>
-                <input type="file" class="form-control-file" name="archivo" required/>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">Comentarios para el maestro</label>
-                <textarea class="form-control" rows="3" name="comentario"></textarea>
-            </div>
+
             {% if es_maestro %}
             <label>Calificación</label>
             <input type="number" min="0" max="10" step="0.1" name="calificacion" />
             {% endif %}
             <button type="submit">Enviar</button>
-        </form>
+        </form> -->
 
 
     </div>

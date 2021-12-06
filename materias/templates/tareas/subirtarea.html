@@ -4,11 +4,12 @@
 
 {% block content %}
 
-<section class="mi-tarea section">
-    <div class="container" style="width: 500px;">
+<section class="section">
+    <div class="container-sm">
         <h2 class="text-center mt-5">Nueva tarea</h2>
         <div class="mini-title text-center">Sube aquí la nueva tarea que asignarás</div>
 
+        <div class="box-c">
         {% if msg %}
         <div class="alert alert-success text-center" role="alert">
             <h3 class="alert-heading">{{ msg }}</h3>
@@ -57,9 +58,10 @@
                 </div>
             </div>
             <button type="submit">Enviar</button>
-            <a class="btn" href="{% url 'avisos' %}">Cancelar</a>
+            <a class="button" href="{% url 'avisos' %}">Cancelar</a>
 
         </form>
+    </div>
     </div><!--cerrando div container-->
 </section>
 

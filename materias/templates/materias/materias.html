@@ -4,16 +4,16 @@
 
 {% block content %}
 
-<section class="menu-materias section">
+<section class="menu-materias">
     <div class="container">
         <h2 class="text-center my-3">Materias</h2>
         <div class="botoncito">
-            <button><a id="btn-link" class="btn-link" href="{% url 'lengua_materna' %}">Lengua materna</a></button>
-            <button><a id="btn-link" class="btn-link" href="{% url 'desafios_matematicos' %}">Desafíos matemáticos</a></button>
-            <button><a id="btn-link" class="btn-link" href="{% url 'ciencias_naturales' %}">Ciencias Naturales</a></button>
-            <button><a id="btn-link" class="btn-link" href="{% url 'educacion_civica' %}">Educación cívica y ética</a></button>
-            <button><a id="btn-link" class="btn-link" href="{% url 'jalisco' %}">Jalisco</a></button>
-            <button><a id="btn-link" class="btn-link" href="{% url 'ingles' %}">Inglés</a></button>
+            <a class="button" role="button" href="{% url 'lengua_materna' %}"><span>Lengua materna</span></a>
+            <a class="button" role="button" href="{% url 'desafios_matematicos' %}"><span>Desafíos matemáticos</span></a>
+            <a class="button" role="button" href="{% url 'ciencias_naturales' %}"><span>Ciencias Naturales</span></a>
+            <a class="button" role="button" href="{% url 'educacion_civica' %}"><span>Educación cívica y ética</span></a>
+            <a class="button" role="button" href="{% url 'jalisco' %}"><span>Jalisco</span></a>
+            <a class="button" role="button" href="{% url 'ingles' %}"><span>Inglés</span></a>
         </div>
     </div>
 </section>

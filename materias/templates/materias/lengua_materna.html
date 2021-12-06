@@ -1,26 +1,32 @@
 {% extends "materias/base.html" %}
 
-{% block title %} Subir tarea {% endblock %}
+{% block title %} Lengua materna {% endblock %}
 
 {% block content %}
 
-<section class="mi-tarea section">
+<section class="section">
     <div class="container-sm">
         <h2 class="text-center my-5">Tareas de Lengua Materna</h2>
-        <h3>Tema de la tarea : Fecha de asignación : Fecha de entrega</h3>
-        {% for tarea in tarea_cn %}
-        <ul class="list-group list-group-horizontal" style="margin-top:10px; margin-bottom: 10px;">
-            <li class="list-group-item">{{ tarea.tema }}</li>
-            <li class="list-group-item">{{ tarea.fecha }}</li>
-            <li class="list-group-item" style="border-top-right-radius: .25rem; border-bottom-right-radius: .25rem;">{{ tarea.fechaLimite }}</li>
-            <a href="{% url 'respuesta' tarea.id %}" class="btn btn-success btn-lg ml-2" role="button">Ver tarea</a>
-            {% if es_maestro %}
-            <a href="{% url 'editar' tarea.id %}" class="btn btn-success btn-lg ml-2" role="button">Editar</a>
-            <a href="{% url 'eliminar' tarea.id %}" class="btn btn-success btn-lg ml-2" role="button">Eliminar</a>
-            {% endif %}
-
-        </ul>
-        {% endfor %}
+        <div class="box-c">
+            <h3 class="clo-textsub" style="text-align:left;">Tema de la tarea : Fecha de entrega</h3>
+            {% for tarea in tarea_cn %}
+            <div class="clover-box">
+                <div class="clover-alu">
+                    <div class="clo-datos">
+                        <li class="clo-li3">{{ tarea.tema }}</li>
+                        <li class="clo-li">{{ tarea.fechaLimite }}</li>
+                    </div>
+                    <div class="clo-botones">
+                        <a href="{% url 'respuesta' tarea.id %}" class="button" role="button">Ver tarea</a>
+                        {% if es_maestro %}
+                        <a href="{% url 'editar' tarea.id %}" class="button" role="button">Editar</a>
+                        <a href="{% url 'eliminar' tarea.id %}" class="button" role="button">Eliminar</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 </section>
 

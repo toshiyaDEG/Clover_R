@@ -46,7 +46,7 @@ h5 {
 }
 button {
     @extend %button-clover;
-    transition: 1s ease-in-out;
+    transition: 0.5s ease-in-out;
 }
 
 button:hover {
@@ -66,6 +66,139 @@ button:hover {
     }
 }
 
+.button {
+    display: inline-block;
+    background-color: $color-title;
+    color: $color-light;
+    border-radius: 10px;
+    text-align: center;
+    padding: .375rem .75rem;
+    font-weight: 400;
+    border: none;
+    text-decoration: none;
+    transition: 0.5s ease-in-out;
+}
+
+.button {
+    a {
+        text-decoration: none;
+    }
+}
+
+
+.box-c{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    a{
+        color: $color-light;
+        text-decoration: none;
+        transition: 0.5 ease-in-out;
+    }
+    a:hover{
+        background-color: $color-base;
+        color: $color-text;
+    }
+    .clover-box {
+        height:auto;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap:5px;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        .clover-alu {
+            height: auto;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap:5px;
+            .clo-datos {
+                display: flex;
+                flex-direction: row;
+                .clo-li {
+                    width: 270px;
+                    height:36px;
+                    padding: 5px;
+                    display: inline-block;
+                    list-style-type:none;
+                    background-color: $color-light;
+                    border-top-right-radius: 0.25rem;
+                    border-bottom-right-radius: 0.25rem;
+                    color: #212529;
+                }
+                .clo-li2 {
+                    width: 220px;
+                    height:36px;
+                    padding: 5px;
+                    display: inline-block;
+                    list-style-type:none;
+                    background-color: $color-light;
+                    color: #212529;
+                }
+                .clo-li3 {
+                    width: 200px;
+                    height:36px;
+                    padding: 5px;
+                    color: #212529;
+                    display: inline-block;
+                    list-style-type:none;
+                    background-color: $color-light;
+                    border-top-left-radius: 0.25rem;
+                    border-bottom-left-radius: 0.25rem;
+                }
+                .clo-num {
+                    height:36px;
+                    width:40px;
+                    padding: 5px 10px;
+                    display: inline-block;
+                    list-style-type:none;
+                    background-color: $color-light;
+                    border-top-left-radius: 0.25rem;
+                    border-bottom-left-radius: 0.25rem;
+                    color: #212529;
+                }
+                .clo-num2 {
+                    height:36px;
+                    width:60px;
+                    padding: 5px 10px;
+                    display: inline-block;
+                    list-style-type:none;
+                    background-color: $color-light;
+                    border-top-right-radius: 0.25rem;
+                    border-bottom-right-radius: 0.25rem;
+                    color: #212529;
+                }
+            }
+            .clo-botones {
+                a {
+                    // display: inline-block;
+                    background-color: $color-title;
+                    color: $color-light;
+                    border-radius: 10px;
+                    text-align: center;
+                    vertical-align: center;
+                    font-weight: 400;
+                    border: none;
+                    text-decoration: none;
+                    transition: 0.5s ease-in-out;
+                }
+                a:hover {
+                    background-color: $color-base;
+                    color: $color-text;
+                }
+            }
+        }
+    }
+}
+
 @media (max-width: 426px) {
     .main {
         margin-top: 60px;
@@ -74,24 +207,37 @@ button:hover {
     section {
         .menu-materias {
             .container {
-                max-width: 300px;
-                display: flex;
-                flex-direction: column;
-                flex-wrap: wrap;
-                justify-content: center;
-                align-items: center;
-                justify-items: center;
-                align-content: center;
-                gap: 50px;
                 .botoncito {
+                    grid-template-columns: repeat(1, 1fr);
+                    grid-template-rows: repeat(6, 1fr);
+                }
+            }
+        }
+    }
+
+    .box-c {
+        .clover-box {
+            .clover-alu {
+                .clo-datos {
                     display: flex;
                     flex-direction: column;
-                    flex-wrap: wrap;
-                    justify-content: center;
                     align-items: center;
-                    justify-items: center;
-                    align-content: center;
-                    gap: 50px;
+                    .clo-num {
+                        width:220px;
+                        margin-top: 15px;
+                        border-radius: 0.25rem 0.25rem 0 0;
+                    }
+                    .clo-num2 {
+                        width: 220px;
+                        border-radius: 0 0 0.25rem 0.25rem;
+                    }
+                    .clo-li {
+                        border-radius: 0 0 0.25rem 0.25rem;
+                    }
+                    .clo-li3{
+                        width:220px;
+                        border-radius: 0.25rem 0.25rem 0 0;
+                    }
                 }
             }
         }
@@ -197,24 +343,36 @@ button:hover {
         gap: 50px;
     }
 
-    .botoncito button {
+    .botoncito {
+        a {
             width: 200px;
             height: 200px;
             background-image: url('https://imgur.com/uNTrhKK.png');
-            box-shadow: 4px 4px 5px #faf1e9;
+            box-shadow: 4px 4px 5px $color-light;
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 1;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: 0.5s ease-in;
+            span {
+                color: $color-light;
+                margin:auto;
+                transition: 0.5s ease-in;
+            }
+        }
+        a:hover{
+            background-color: $color-back2;
+            span {
+                text-decoration: none;
+                color: $color-back1;
+            }
+        }
     }
 
-    .botoncito button a {
-        font-size: 30px;
-        color: $color-light;
-        font-weight: 600;
-        line-height: 1;
-        text-decoration: none;
-    }
-
-    .botoncito button a:hover {
-        text-decoration: none;
-    }
     .lista {
         background-color: $color-light;
         border-radius: 5px;
@@ -240,4 +398,24 @@ button:hover {
         font-size: 12px;
         border: 1px solid $color-title;
         padding:10px;
+    }
+
+    .clo-text1 {
+        color: $text-dark
+    }
+
+    .clo-textsub {
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    .card-body {
+        button{
+            @extend %button-clover;
+            transition: 0.5s ease-in-out;
+        }
+        button:hover {
+            background-color: $color-base;
+            color: $color-text;
+        }
     }
