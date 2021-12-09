@@ -228,37 +228,6 @@ button:hover {
   color: #b1d182;
 }
 
-@media (max-width: 426px) {
-  .main {
-    margin-top: 60px;
-  }
-  section .menu-materias .container .botoncito {
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-  }
-  .box-c .clover-box .clover-alu .clo-datos {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .box-c .clover-box .clover-alu .clo-datos .clo-num {
-    width: 220px;
-    margin-top: 15px;
-    border-radius: 0.25rem 0.25rem 0 0;
-  }
-  .box-c .clover-box .clover-alu .clo-datos .clo-num2 {
-    width: 220px;
-    border-radius: 0 0 0.25rem 0.25rem;
-  }
-  .box-c .clover-box .clover-alu .clo-datos .clo-li {
-    border-radius: 0 0 0.25rem 0.25rem;
-  }
-  .box-c .clover-box .clover-alu .clo-datos .clo-li3 {
-    width: 220px;
-    border-radius: 0.25rem 0.25rem 0 0;
-  }
-}
-
 .nav-link {
   background-color: #343a40;
 }
@@ -433,4 +402,38 @@ small {
 .card-body button:hover {
   background-color: #2b463c;
   color: #b1d182;
+}
+
+@media (max-width: 426px) {
+  .main {
+    margin-top: 60px;
+  }
+  .menu-materias .container .botoncito {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    align-items: start;
+    justify-content: center;
+  }
+  .box-c .clover-box .clover-alu .clo-datos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .box-c .clover-box .clover-alu .clo-datos .clo-num {
+    width: 220px;
+    margin-top: 15px;
+    border-radius: 0.25rem 0.25rem 0 0;
+  }
+  .box-c .clover-box .clover-alu .clo-datos .clo-num2 {
+    width: 220px;
+    border-radius: 0 0 0.25rem 0.25rem;
+  }
+  .box-c .clover-box .clover-alu .clo-datos .clo-li {
+    border-radius: 0 0 0.25rem 0.25rem;
+  }
+  .box-c .clover-box .clover-alu .clo-datos .clo-li3 {
+    width: 220px;
+    border-radius: 0.25rem 0.25rem 0 0;
+  }
 }
