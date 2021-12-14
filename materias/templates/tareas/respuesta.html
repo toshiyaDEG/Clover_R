@@ -9,6 +9,7 @@
         <h2 class="text-center mt-5">Tareas</h2>
         <div class="mini-title text-center">Explicación de la tarea</div>
 
+        <div class="box-c">
         {% if msg %}
         <div class="alert alert-success text-center" role="alert">
             <h3 class="alert-heading">{{ msg }}</h3>
@@ -41,8 +42,8 @@
                     <input type="number" min="0" max="10" step="0.1" name="calificacion" />
                     {% endif %}
                     <button type="submit">Enviar</button>
-        </form>
-        </div>
+                </form>
+            </div>
 
         <!-- <h3 class="">Tema: {{ tarea_obj.tema }}</h3>
         <p>Límite de entrega: {{ tarea_obj.fechaLimite}}</p>
@@ -65,7 +66,7 @@
             <button type="submit">Enviar</button>
         </form> -->
 
-
+        </div>
     </div>
 </section>
 
