@@ -112,7 +112,7 @@ def jalisco(request):
 
 # Aquí inician funcionalidades para gestionar tareas
 @login_required()
-def respuesta(request, id_tarea, msg=""):
+def respuesta(request, id_tarea):
     """Función para que los alumnos suban tareas"""
     tarea_cn = Tarea.objects.filter(materia_tarea__id = 3)
     materias = Materia.objects.all()
@@ -152,10 +152,10 @@ def respuesta(request, id_tarea, msg=""):
         respuesta.archivo=archivo_f
         respuesta.save()
 
-        msg = "Tarea entregada correctamente"
+        # msg = "Tarea entregada correctamente"
         return render(request, "tareas/respuesta.html",
         {
-            "msg":msg,
+            # "msg":msg,
             "es_maestro":es_maestro,
             "es_alumno":es_alumno,
             "materias":materias
